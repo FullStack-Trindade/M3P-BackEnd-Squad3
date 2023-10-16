@@ -3,12 +3,16 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
 const port = 3008;
+const cors = require('cors')
 
 const loginService = require('./services/login.service');
 const usuariosService = require('./services/usuarios.service');
 const pacientesService = require('./services/pacientes.service');
 const consultasService = require('./services/consultas.service');
 
+app.use(cors({
+  origin: '*'
+}))
 app.use(bodyParser.json());
 
 app.post('/api/usuarios/login', loginService.login);
